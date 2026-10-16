@@ -1,4 +1,4 @@
-# Excerpt from a private workspace: BrainAI/systems/check-loop-suite.sh at b8cd017b.
+# Excerpt from a private workspace: systems/check-loop-suite.sh at b8cd017b.
 # Shown for reading. Not licensed for reuse; see ../LICENSE.
 # Checks 5 and 10 of 17. $LOOPS is "name:ledger:monthly-sends:today-block", one per line;
 # $CMD, $CONTRACT and $HOOK are the three artifacts each loop is checked against.

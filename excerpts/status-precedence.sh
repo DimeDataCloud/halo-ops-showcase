@@ -1,4 +1,4 @@
-# Excerpt from a private workspace: BrainAI/systems/halo-status.sh at 76664090.
+# Excerpt from a private workspace: systems/halo-status.sh at 76664090.
 # Shown for reading. Not licensed for reuse; see ../LICENSE.
 # Two precedence ladders from the status script. Everything between them is not shown.
 
@@ -23,7 +23,7 @@ if [ -f "$CACHE/dispatch-status" ]; then
                     "${dv:-?}" "$(( (NOW - dt)/60 ))" ;;
   esac
 else
-  echo "  dispatch NOT RUNNING — no supervisor; officers only move when invoked ([[systems/loop-dispatcher]])"
+  echo "  dispatch NOT RUNNING — no supervisor; officers only move when invoked"
 fi
 if [ -s "$CACHE/dispatch-excluded" ]; then
   # Deliberately skipped officers look exactly like dead ones in the liveness list above.

@@ -1,4 +1,4 @@
-// Excerpt from a private codebase: halo-suite-os, services/claude-pool.js at 9d1bc42.
+// Excerpt from a private codebase: services/claude-pool.js at 9d1bc42.
 // Shown for reading. Not licensed for reuse; see ../LICENSE.
 // The failure the file exists to prevent (its header comment), then ClaudePool.classify().
 // classify() is a static method of the ClaudePool class; the rest of the class is not shown.
