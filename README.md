@@ -13,29 +13,29 @@ repository describes the part worth reading.
 
 Unattended agents fail quietly. A model hits its usage limit, exits with status 0 and prints the
 apology where the answer should be. A loop goes silent and looks exactly like one that was paused
-on purpose. Thirteen command files each claim to follow the same rules, and nobody notices when
+on purpose. Every command file claims to follow the same rules, and nobody notices when
 two of them stop. None of these throw an error, so each needs something that measures it.
 
 ## What it does
 
 | | |
 |---|---|
-| **Officer loops** | Thirteen scheduled roles (outbound, inbound, funding, security, ops, legal and so on). Each owns a ledger, a cadence and a slice of a shared monthly send budget. |
+| **Officer loops** | Scheduled roles (outbound, inbound, funding, security, ops, legal and so on). Each owns a ledger, a cadence and a slice of a shared monthly send budget. |
 | **Dispatcher** | Decides which loops are due, staggers them, and publishes its own state so a stopped supervisor is visible in every session. It stands down when the account hits a usage limit instead of firing into the wall. |
 | **MCP server** | `halo_mcp` exposes suites (devops, capital, legal and others), each bound to a default model and effort. Claude work rotates across a pool of subscription seats and remembers which are throttled until their stated reset. |
 | **Status board** | One script answers "what is running now". Staleness is judged against each loop's own cadence, not a global timeout, and skipped-on-purpose is shown separately from dead. |
-| **Suite checker** | Seventeen executable invariants over the command files, the shared contract and the hook: send allocations, cadence, ledger ownership, roster agreement and more. Drift prints what, where and the expected value. |
+| **Suite checker** | A suite of executable invariants over the command files, the shared contract and the hook: send allocations, cadence, ledger ownership, roster agreement and more. Drift prints what, where and the expected value. |
 
 ## How it works
 
 ```mermaid
 flowchart LR
-    D[Dispatcher<br/>due loops · stagger · stand-down] --> L[13 officer loops<br/>ledger · cadence · send share]
+    D[Dispatcher<br/>due loops · stagger · stand-down] --> L[officer loops<br/>ledger · cadence · send share]
     L --> M[halo_mcp<br/>suites · model routing]
     M --> P[Seat pool<br/>classify · rotate · cooldown]
     D --> S[(State files<br/>status · gated)]
     S --> B[Status board<br/>NEVER · STALL · due · ok]
-    C[Suite checker<br/>17 invariants] -. verifies .-> L
+    C[Suite checker<br/>invariants] -. verifies .-> L
     C -. verifies .-> B
 ```
 
@@ -49,8 +49,8 @@ merely due.
 
 **A rule nobody measures is a preference.** The checker exists because an audit found send
 allocations summing past the company ceiling, a loop committing under a different prefix than its
-twelve siblings, and objection handling owned by four loops. None was visible without reading all
-thirteen files side by side.
+sibling loops, and objection handling owned by more than one loop. None was visible without reading all
+the files side by side.
 
 ## Built with
 
@@ -60,8 +60,8 @@ Node.js · Bash · PowerShell · Supabase (pool state) · Docker · Caddy · the
 
 | | |
 |---|---|
-| Officer loops | **13** scheduled roles |
-| Suite checker | **17** executable invariants |
+| Officer loops | **Scheduled roles**, each with its own ledger and cadence |
+| Suite checker | **Executable** invariants over the command files and the shared contract |
 
 ## Status
 
